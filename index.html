@@ -68,6 +68,10 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             transition: all 0.2s ease;
             text-align: center;
+            display: block;           /* Делает кнопку блочной */
+            width: 100%;              /* Растягивает на всю ширину */
+            box-sizing: border-box;   /* Удерживает внутри серой плашки */ 
+            margin-bottom: 1px;
         }
         /* Эффект наведения мыши */
         .nav-btn:hover {
@@ -100,11 +104,9 @@
         Панорамирование: тяните двумя пальцами.<br>
         </div>
         <button id="toggleInfo" style="display:block; margin:10px auto 0 auto; cursor:pointer; background:none; border:none; font-size:18px;">▲</button>
-        
-        <!-- Меню переключения моделей перенесено сюда (оно вне сворачиваемого блока #infoLegend) -->
-        <div class="navigation-menu">
-            <button class="nav-btn active" onclick="switchModel(this, 'stadia11.glb', 'show-main')">Стадия 1</button>
-            <button class="nav-btn" onclick="switchModel(this, 'stadia1.glb', 'stadia1')">Стадия 2</button>
+         <div id="infoLegend">
+            <button class="nav-btn active" onclick="switchModel(this, 'stadia11.glb', 'show-main')">Стадия 1</button><br>
+            <button class="nav-btn" onclick="switchModel(this, 'stadia1.glb', 'stadia1')">Стадия 2</button><br>
             <button class="nav-btn" onclick="switchModel(this, 'stadia2.glb', 'stadia2')">Стадия 3</button>
         </div>
     </div>
