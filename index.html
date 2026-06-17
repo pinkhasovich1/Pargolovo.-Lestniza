@@ -103,8 +103,9 @@
         
         <!-- Меню переключения моделей перенесено сюда (оно вне сворачиваемого блока #infoLegend) -->
         <div class="navigation-menu">
-            <button class="nav-btn active" onclick="switchModel(this, 'stadia1.glb', 'show-main')">Стадия 1</button>
-            <button class="nav-btn" onclick="switchModel(this, 'stadia2.glb', 'show-uzel1')">Стадия 2</button>
+            <button class="nav-btn active" onclick="switchModel(this, 'stadia11.glb', 'show-main')">Стадия 1</button>
+            <button class="nav-btn" onclick="switchModel(this, 'stadia1.glb', 'stadia1')">Стадия 2</button>
+            <button class="nav-btn" onclick="switchModel(this, 'stadia2.glb', 'stadia2')">Стадия 3</button>
         </div>
 
         <div id="infoLegend">
@@ -125,7 +126,7 @@
 
     <model-viewer
         id="viewer"
-        src="stadia1.glb"  alt="Парголово. Лестница"
+        src="stadia11.glb"  alt="Парголово. Лестница"
         camera-controls           
         touch-action="pan-y"      
         auto-rotate               
