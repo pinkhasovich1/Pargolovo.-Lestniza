@@ -83,20 +83,8 @@
             color: #ffffff;
             border-color: #0056b3;
         }
-
-        /* КЛАССЫ ДЛЯ АВТОМАТИЧЕСКОЙ СМЕНЫ ТЕКСТА ЛЕГЕНД ЧЕРЕЗ СТИЛИ body */
-        .legend-section {
-            display: none; /* Прячем все варианты текста по умолчанию */
-        }
-        /* Показываем нужный текст в зависимости от класса на теге body */
-        body.show-main .legend-main { display: block; }
-        body.show-uzel1 .legend-uzel1 { display: block; }
-        body.show-uzel2 .legend-uzel2 { display: block; }
     </style>
 </head>
-<!-- Изначально вешаем класс show-main для отображения общей легенды -->
-<body class="show-main">
-
     <div class="info-text" id="infoText">
         <div id="infoInstructions">
         Поворачивайте: тяните одним пальцем.<br>
@@ -127,11 +115,28 @@
     </model-viewer>
 
 <script>
-    // Скрипт для сворачивания легенды (ваш оригинальный)
+    // 1. Функция переключения 3D-моделей (НЕ УДАЛЯТЬ, ОНА ОЧЕНЬ ВАЖНАЯ)
+    function switchModel(buttonElement, modelPath, bodyClass) {
+        const viewer = document.getElementById('viewer');
+        viewer.src = modelPath;
+
+        const buttons = document.querySelectorAll('.nav-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        buttonElement.classList.add('active');
+
+        document.body.className = bodyClass;
+    }
+
+    // 2. Скрипт для сворачивания легенды, который мы только что починили для телефонов
     const toggleBtn = document.getElementById('toggleInfo');
     const infoLegend = document.getElementById('infoLegend');
     let collapsed = false;
-    toggleBtn.addEventListener('click', function() {
+
+    function toggleMenu(e) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         collapsed = !collapsed;
         if (collapsed) {
             infoLegend.style.display = 'none';
@@ -140,23 +145,11 @@
             infoLegend.style.display = '';
             toggleBtn.textContent = '▲';
         }
-    });
-
-    // Рабочий скрипт с добавлением одной надежной строки для CSS-класса
-    function switchModel(buttonElement, modelPath, bodyClass) {
-        const viewer = document.getElementById('viewer');
-        
-        // Меняем путь к файлу модели у вьювера
-        viewer.src = modelPath;
-
-        // Переключаем класс подсветки активной кнопки
-        const buttons = document.querySelectorAll('.nav-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
-        buttonElement.classList.add('active');
-
-        // Меняем класс у body, чтобы CSS сам переключил текст
-        document.body.className = bodyClass;
     }
+
+    toggleBtn.addEventListener('pointerdown', toggleMenu);
+    toggleBtn.style.cursor = 'pointer';
+    toggleBtn.style.touchAction = 'manipulation';
 </script>
 </body>
 </html>
