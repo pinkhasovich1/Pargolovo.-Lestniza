@@ -107,21 +107,6 @@
             <button class="nav-btn" onclick="switchModel(this, 'stadia1.glb', 'stadia1')">Стадия 2</button>
             <button class="nav-btn" onclick="switchModel(this, 'stadia2.glb', 'stadia2')">Стадия 3</button>
         </div>
-
-        <div id="infoLegend">
-            
-            <!-- ЛЕГЕНДА ДЛЯ СТАДИИ 1 -->
-            <div class="legend-section legend-main">
-
-
-            </div>
-
-            <!-- ЛЕГЕНДА ДЛЯ СТАДИИ 2 -->
-            <div class="legend-section legend-uzel1">
-
-            </div>
-
-        </div>
     </div>
 
     <model-viewer
@@ -129,15 +114,14 @@
         src="stadia11.glb"  alt="Парголово. Лестница"
         camera-controls           
         touch-action="pan-y"      
-        auto-rotate               
-        auto-rotate-delay="10000000"  
-        rotation-per-second="0.2rad" 
         shadow-intensity="1"  
         style="filter: none;"    
-        environment-image="neutral" exposure="1"              
-        loading="eager"           ar                        
+        environment-image="neutral" 
+        exposure="1"              
+        loading="eager"           
+        ar                        
         ar-modes="webxr scene-viewer quick-look"
-        min-camera-orbit="auto auto 20%">
+        min-camera-orbit="auto auto 5%">
     </model-viewer>
 
 <script>
